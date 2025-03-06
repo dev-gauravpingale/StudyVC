@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "06076e28f74747b9ea7b",
+  "position": {
+    "x": 108.36199352856184,
+    "y": 0,
+    "z": 0,
+    "height": 623.49823968741737,
+    "width": 960.25397342233259,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ODI Cricket Data new"
+                    }
+                  },
+                  "Property": "team"
+                }
+              },
+              "queryRef": "ODI Cricket Data new.team",
+              "nativeQueryRef": "team"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ODI Cricket Data new"
+                        }
+                      },
+                      "Property": "matches_won"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(ODI Cricket Data new.matches_won)",
+              "nativeQueryRef": "Sum of matches_won"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "ODI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2993928f-8407-4cb1-a0ed-d8246a8fbad9"
+  }
+}

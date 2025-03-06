@@ -1,0 +1,164 @@
+table 'ODI Cricket Data new'
+	lineageTag: 476f4086-8f39-44f9-83ae-f71a73366ae1
+
+	column player_name
+		dataType: string
+		lineageTag: 808f6df4-63aa-45be-8981-fb6f3a2d7a65
+		summarizeBy: none
+		sourceColumn: player_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column role
+		dataType: string
+		lineageTag: bedd5f40-d578-4e60-979e-16fc452fa4cc
+		summarizeBy: none
+		sourceColumn: role
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_runs
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c2ca3d4-2d8c-497a-adfc-ac5457bcb625
+		summarizeBy: sum
+		sourceColumn: total_runs
+
+		annotation SummarizationSetBy = Automatic
+
+	column strike_rate
+		dataType: string
+		lineageTag: 819e5ae3-b8a4-4414-b98a-06734b7ac348
+		summarizeBy: none
+		sourceColumn: strike_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_balls_faced
+		dataType: int64
+		formatString: 0
+		lineageTag: cc86bcec-2017-46be-ad00-e088f577c78e
+		summarizeBy: sum
+		sourceColumn: total_balls_faced
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_wickets_taken
+		dataType: int64
+		formatString: 0
+		lineageTag: 29642904-447d-457f-abe4-469d9ee40808
+		summarizeBy: sum
+		sourceColumn: total_wickets_taken
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_runs_conceded
+		dataType: int64
+		formatString: 0
+		lineageTag: 278be896-b4c8-4d38-8b02-7f5a38db0663
+		summarizeBy: sum
+		sourceColumn: total_runs_conceded
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_overs_bowled
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b198839-ef77-4834-88ef-73bd5655a81a
+		summarizeBy: sum
+		sourceColumn: total_overs_bowled
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_matches_played
+		dataType: int64
+		formatString: 0
+		lineageTag: 14f42089-046c-4e0a-8f0d-983f9f9adf77
+		summarizeBy: sum
+		sourceColumn: total_matches_played
+
+		annotation SummarizationSetBy = Automatic
+
+	column matches_played_as_batter
+		dataType: int64
+		formatString: 0
+		lineageTag: 70a07408-226d-47fc-8902-d0955c8a838b
+		summarizeBy: sum
+		sourceColumn: matches_played_as_batter
+
+		annotation SummarizationSetBy = Automatic
+
+	column matches_played_as_bowler
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e9451a7-7783-4b1d-b3d2-34141aee5c60
+		summarizeBy: sum
+		sourceColumn: matches_played_as_bowler
+
+		annotation SummarizationSetBy = Automatic
+
+	column matches_won
+		dataType: int64
+		formatString: 0
+		lineageTag: ca906448-5b55-408e-9461-646157efbb96
+		summarizeBy: sum
+		sourceColumn: matches_won
+
+		annotation SummarizationSetBy = Automatic
+
+	column matches_lost
+		dataType: int64
+		formatString: 0
+		lineageTag: 030e28b9-bf3b-4466-9a56-a2241abd719e
+		summarizeBy: sum
+		sourceColumn: matches_lost
+
+		annotation SummarizationSetBy = Automatic
+
+	column player_of_match_awards
+		dataType: int64
+		formatString: 0
+		lineageTag: 9b2e557e-2a35-489d-8d90-4677e458fc21
+		summarizeBy: sum
+		sourceColumn: player_of_match_awards
+
+		annotation SummarizationSetBy = Automatic
+
+	column team
+		dataType: string
+		lineageTag: c6c14ff1-82c9-4c6b-8c17-18583cc5943c
+		summarizeBy: none
+		sourceColumn: team
+
+		annotation SummarizationSetBy = Automatic
+
+	column average
+		dataType: string
+		lineageTag: d37c043e-46af-4b32-8017-a8dc7e008f43
+		summarizeBy: none
+		sourceColumn: average
+
+		annotation SummarizationSetBy = Automatic
+
+	column percentage
+		dataType: double
+		lineageTag: 230303f1-1e70-4019-ad71-c5b2b574406c
+		summarizeBy: sum
+		sourceColumn: percentage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'ODI Cricket Data new' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\OneDrive\Desktop\VCGITHUB\StudyVC\ODI Cricket Data new.csv"),[Delimiter=",", Columns=17, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"player_name", type text}, {"role", type text}, {"total_runs", Int64.Type}, {"strike_rate", type text}, {"total_balls_faced", Int64.Type}, {"total_wickets_taken", Int64.Type}, {"total_runs_conceded", Int64.Type}, {"total_overs_bowled", Int64.Type}, {"total_matches_played", Int64.Type}, {"matches_played_as_batter", Int64.Type}, {"matches_played_as_bowler", Int64.Type}, {"matches_won", Int64.Type}, {"matches_lost", Int64.Type}, {"player_of_match_awards", Int64.Type}, {"team", type text}, {"average", type text}, {"percentage", Percentage.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

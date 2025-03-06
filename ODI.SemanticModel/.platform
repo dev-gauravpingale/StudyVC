@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "ODI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "cc42550f-eb77-4557-ad4e-1adad395bad6"
+  }
+}
